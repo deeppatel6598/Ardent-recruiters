@@ -1,0 +1,113 @@
+/* =============================================
+   ARDENT RECRUITERS — Animations
+   ============================================= */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.2); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hero entrance animations */
+.hero-badge { animation: fadeInUp 0.6s ease 0.1s both; }
+.hero-title  { animation: fadeInUp 0.7s ease 0.2s both; }
+.hero-subtitle { animation: fadeInUp 0.7s ease 0.35s both; }
+.hero-actions  { animation: fadeInUp 0.7s ease 0.5s both; }
+.hero-trust    { animation: fadeInUp 0.7s ease 0.6s both; }
+.hero-visual   { animation: slideInRight 0.8s ease 0.3s both; }
+
+/* Page hero */
+.page-hero-label { animation: fadeInUp 0.5s ease 0.1s both; }
+.page-hero h1    { animation: fadeInUp 0.6s ease 0.2s both; }
+.page-hero p     { animation: fadeInUp 0.6s ease 0.35s both; }
+.page-hero-actions { animation: fadeInUp 0.6s ease 0.5s both; }
+
+/* Smooth gradient background */
+.hero, .page-hero {
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* Card hover shine effect */
+.card::after, .service-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255,255,255,0.08) 50%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.card { position: relative; }
+.service-card { position: relative; }
+.card:hover::after, .service-card:hover::after { opacity: 1; }
+
+/* Loading skeleton shimmer */
+.skeleton {
+  background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-200) 50%, var(--gray-100) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--r-md);
+}
+
+/* Number counter animation */
+.stat-num.counting { animation: countUp 0.5s ease both; }
+
+/* Stagger children */
+.stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.10s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.20s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.30s; }
