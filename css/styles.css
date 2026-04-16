@@ -1513,4 +1513,173 @@ h1, h2, h3, h4, h5, h6 {
   .cta-banner { padding: var(--sp-10) var(--sp-6); }
   .hero-actions { flex-direction: column; align-items: flex-start; }
   .hero-title { font-size: 2.25rem; }
+
+  /* ---- Compare table: stacked card layout on mobile ---- */
+  .compare-header { display: none; }
+  .compare-row {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--gray-100);
+    padding: var(--sp-3);
+    gap: var(--sp-1);
+  }
+  .compare-cell {
+    display: block;
+    text-align: left;
+    padding: var(--sp-2) var(--sp-3);
+    font-size: var(--text-sm);
+    justify-content: flex-start;
+  }
+  .compare-cell.label {
+    font-weight: 700;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray-600);
+    background: var(--gray-50);
+    border-radius: var(--r-sm);
+    padding: var(--sp-1) var(--sp-3);
+  }
+  .compare-cell.without,
+  .compare-cell.with { font-size: var(--text-sm); }
+  .compare-cell.without::before { content: "✗ "; color: #dc2626; font-weight: 700; }
+  .compare-cell.with::before { content: "✓ "; color: var(--success); font-weight: 700; }
+
+  /* ---- Hero trust: hide dividers when items wrap ---- */
+  .hero-trust-divider { display: none; }
+
+  /* ---- Stat card tighter padding on mobile ---- */
+  .stat-card { padding: var(--sp-5) var(--sp-4); }
+
+  /* ---- Page hero spacing ---- */
+  .page-hero { padding: 120px 0 60px; }
+
+  /* ---- Accordion body indent reset on mobile ---- */
+  .accordion-body-inner { padding-left: var(--sp-5); }
+
+  /* ---- CTA & page hero action buttons stack vertically ---- */
+  .cta-banner-actions { flex-direction: column; align-items: center; }
+  .page-hero-actions { flex-direction: column; align-items: center; }
+
+  /* ---- Reward table: horizontal scroll on mobile ---- */
+  .reward-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* ---- Location strip on mobile ---- */
+  .location-divider { display: none; }
+  .location-strip-inner { justify-content: center; gap: var(--sp-5); }
+
+  /* ---- Better touch targets ---- */
+  .btn { min-height: 48px; }
+  .btn-lg { min-height: 52px; }
+  .faq-question { min-height: 52px; }
+}
+
+/* Very small screens (< 380px) — single column for stats */
+@media (max-width: 380px) {
+  .stats-cards { grid-template-columns: 1fr; }
+  .stats-grid  { grid-template-columns: 1fr; }
+  .team-grid   { grid-template-columns: 1fr; }
+}
+
+/* ===================== UI / UX ENHANCEMENTS ===================== */
+
+/* Gradient text for stat card numbers (inner page cards) */
+.stat-card-num {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 60%, #4f83d8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Accent top-border stripe on stat cards — cycles per position */
+.stat-card { position: relative; overflow: hidden; }
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+}
+.stat-card:nth-child(2)::before { background: linear-gradient(90deg, var(--accent), #fbbf24); }
+.stat-card:nth-child(3)::before { background: linear-gradient(90deg, var(--success), #34d399); }
+.stat-card:nth-child(4)::before { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+
+/* Stat card hover: tinted border */
+.stat-card:hover { border-color: var(--primary-200); }
+
+/* Gradient text for section title highlighted words */
+.section-title span {
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced gradient buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 60%, var(--primary-dark) 100%);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+}
+.btn-accent {
+  background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 60%, var(--accent-dark) 100%);
+}
+.btn-accent:hover {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+}
+
+/* Feature icon animated on parent hover */
+.feature-icon { transition: all var(--t-base); }
+.feature-item:hover .feature-icon {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: var(--white);
+}
+
+/* Service card: branded border on hover instead of transparent */
+.service-card:hover { border-color: var(--primary-200); }
+
+/* Subtle dot pattern for gray section backgrounds */
+.section.bg-gray,
+.section-sm.bg-gray {
+  background-image: radial-gradient(var(--gray-200) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+  background-color: var(--gray-50);
+}
+
+/* Richer animated CTA banner */
+.cta-banner {
+  background: linear-gradient(
+    135deg,
+    #001240 0%,
+    var(--primary) 35%,
+    #1a57c7 65%,
+    #2563eb 85%,
+    #1e40af 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 12s ease infinite;
+}
+
+/* Process step: subtle left accent bar on mobile */
+@media (max-width: 640px) {
+  .process-step {
+    border-left: 3px solid var(--primary-200);
+    text-align: left;
+  }
+  .process-num { margin: 0 0 var(--sp-4); }
+}
+
+/* Insights / article card: slightly warmer hover */
+.article-card:hover { box-shadow: var(--shadow-xl); border-color: var(--primary-100); }
+
+/* Job card: hover accent */
+.job-card:hover { border-color: var(--primary); }
+
+/* Footer social button accent on hover */
+.footer-social-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+  transform: translateY(-2px);
 }
